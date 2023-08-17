@@ -1,0 +1,119 @@
+{
+  "name": "@brighthustle/adonis-transmit",
+  "version": "0.0.1",
+  "description": "SSE Wrapper for adonis v5",
+  "main": "build/providers/TransmitProvider.js",
+  "scripts": {
+    "mrm": "mrm --preset=@adonisjs/mrm-preset",
+    "pretest": "npm run lint",
+    "test": "node -r @adonisjs/require-ts/build/register bin/test.ts",
+    "clean": "del-cli build",
+    "build": "npm run compile",
+    "prepublishOnly": "npm run build",
+    "copyfiles": "copyfiles \"instructions.md\" build",
+    "compile": "npm run lint && npm run clean && tsc && npm run copyfiles",
+    "lint": "eslint . --ext=.ts",
+    "format": "prettier --write .",
+    "commit": "git-cz",
+    "release": "np --message=\"chore(release): %s\"",
+    "version": "npm run build",
+    "sync-labels": "github-label-sync --labels ./node_modules/@adonisjs/mrm-preset/gh-labels.json BrightHustle/adonisjs-whatsapp"
+  },
+  "author": "Kumar Yash",
+  "license": "MIT",
+  "keywords": [
+    "sse",
+    "server-sent-event",
+    "adonis",
+    "adonisjs",
+    "adonis-framework"
+  ],
+  "devDependencies": {
+    "@adonisjs/core": "^5.9.0",
+    "@adonisjs/mrm-preset": "^5.0.3",
+    "@adonisjs/require-ts": "^2.0.13",
+    "@adonisjs/sink": "^5.4.2",
+    "@types/node": "^20.5.0",
+    "del-cli": "^5.0.0",
+    "mrm": "^4.1.17",
+    "copyfiles": "^2.4.1",
+    "@types/mime-types": "^2.1.1",
+    "eslint": "^8.33.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-adonis": "^2.1.1",
+    "eslint-plugin-prettier": "^4.2.1",
+    "np": "^7.6.3",
+    "prettier": "^2.8.3",
+    "typescript": "^5.1.6"
+  },
+  "dependencies": {
+    "@poppinss/matchit": "^3.1.2",
+    "@poppinss/utils": "^6.5.0-3",
+    "emittery": "^1.0.1"
+  },
+  "peerDependencies": {
+    "@adonisjs/core": "^5.9.0"
+  },
+  "mrmConfig": {
+    "core": false,
+    "license": "MIT",
+    "services": [
+      "github-actions"
+    ],
+    "minNodeVersion": "latest",
+    "probotApps": [
+      "lock"
+    ],
+    "runGhActionsOnWindows": true
+  },
+  "types": "build/adonis-typings/index.d.ts",
+  "files": [
+    "build/adonis-typings",
+    "build/src",
+    "build/providers"
+  ],
+  "eslintConfig": {
+    "extends": [
+      "plugin:adonis/typescriptPackage",
+      "prettier"
+    ],
+    "plugins": [
+      "prettier"
+    ],
+    "rules": {
+      "prettier/prettier": [
+        "error",
+        {
+          "endOfLine": "auto"
+        }
+      ]
+    }
+  },
+  "eslintIgnore": [
+    "build"
+  ],
+  "prettier": {
+    "trailingComma": "es5",
+    "semi": false,
+    "singleQuote": true,
+    "useTabs": false,
+    "quoteProps": "consistent",
+    "bracketSpacing": true,
+    "arrowParens": "always",
+    "printWidth": 100
+  },
+  "np": {
+    "contents": ".",
+    "anyBranch": false
+  },
+  "publishConfig": {
+    "access": "public,"
+  },
+  "adonisjs": {
+    "instructionsMd": "./build/instructions.md",
+    "providers": [
+      "@brighthustle/adonis-transmit"
+    ],
+    "types": "@brighthustle/adonis-transmit"
+  }
+}
