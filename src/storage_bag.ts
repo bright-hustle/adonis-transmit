@@ -24,8 +24,6 @@ export class StorageBag {
     }
 
     channels.add(channel)
-    console.log('channel store out ::', channels)
-    console.log('subscribers store out ::', this.#subscribers)
 
     return true
   }
@@ -42,7 +40,6 @@ export class StorageBag {
 
   public findByChannel(channel: string) {
     const subscribers = new Set<Stream>()
-    console.log(this.#subscribers)
     for (const [stream, streamChannels] of this.#subscribers) {
       if (streamChannels.has(channel)) {
         subscribers.add(stream)

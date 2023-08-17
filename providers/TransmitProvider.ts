@@ -33,7 +33,6 @@ export default class TransmitProvider {
       const channel = ctx.request.input('channel')
 
       const success = await transmit.subscribeToChannel(uid, channel, ctx)
-      console.log(success)
       if (!success) {
         return ctx.response.badRequest()
       }

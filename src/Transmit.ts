@@ -126,9 +126,7 @@ export default class Transmit extends Emittery<TransmitHooks> implements Transmi
     if (from === this.#id) {
       return
     }
-    console.log('channel ::', channel)
     const subscribers = this.#storage.findByChannel(channel)
-    console.log('subscribers ::', subscribers)
 
     for (const subscriber of subscribers) {
       subscriber.writeMessage({ data: { channel, payload } })
