@@ -1,4 +1,4 @@
-![adonis-transmit](https://socialify.git.ci/Bright-Hustle/adonis-transmit?language=1&logo=https%3A%2F%2Fbrighthustle.in%2Fassets%2Fimages%2Fmisc%2Ffront_banner.png&name=1&owner=1&stargazers=1&theme=Light)
+![adonis-transmit](https://socialify.git.ci/Bright-Hustle/adonis-transmit/image?language=1&logo=https%3A%2F%2Fbrighthustle.in%2Fassets%2Fimages%2Fmisc%2Ffront_banner.png&name=1&owner=1&stargazers=1&theme=Light)
 
 ## What's this
 
