@@ -22,7 +22,7 @@ export default class TransmitProvider {
 
   public async boot() {
     const router = await this.app.container.make('Adonis/Core/Route')
-    const transmit = await this.app.container.make('Adonis/Addons/WhatsApp')
+    const transmit = await this.app.container.make('Adonis/Addons/Transmit')
 
     router.get('__transmit/events', (ctx: HttpContextContract) => {
       transmit.createStream(ctx)

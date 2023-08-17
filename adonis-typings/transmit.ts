@@ -16,6 +16,12 @@ declare module '@ioc:Adonis/Addons/Transmit' {
       internal?: boolean,
       from?: string
     ): void
+
+    createStream(ctx: any): void
+
+    subscribeToChannel(uid: string, channel: string, ctx: any): Promise<boolean>
+
+    unsubscribeFromChannel(uid: string, channel: string): boolean
   }
 
   const Transmit: TransmitContract
