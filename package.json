@@ -1,6 +1,6 @@
 {
   "name": "@brighthustle/adonis-transmit",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "SSE Wrapper for adonis v5",
   "main": "build/providers/TransmitProvider.js",
   "scripts": {
@@ -49,7 +49,7 @@
   "dependencies": {
     "@poppinss/matchit": "^3.1.2",
     "@poppinss/utils": "^6.5.0-3",
-    "emittery": "^1.0.1"
+    "emittery": "0.11.0"
   },
   "peerDependencies": {
     "@adonisjs/core": "^5.9.0"
@@ -107,7 +107,7 @@
     "anyBranch": false
   },
   "publishConfig": {
-    "access": "public,"
+    "access": "public"
   },
   "adonisjs": {
     "instructionsMd": "./build/instructions.md",

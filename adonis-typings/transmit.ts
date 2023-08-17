@@ -17,4 +17,7 @@ declare module '@ioc:Adonis/Addons/Transmit' {
       from?: string
     ): void
   }
+
+  const Transmit: TransmitContract
+  export default Transmit
 }
