@@ -1,4 +1,4 @@
-import { v5 as randomUUID } from 'uuid'
+import { v4 as uuidv4 } from 'uuid'
 import Emittery from 'emittery'
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import { Stream } from './Stream'
@@ -45,7 +45,7 @@ export default class Transmit extends Emittery<TransmitHooks> implements Transmi
   constructor(config: TransmitConfig, transport: Transport | null) {
     super()
 
-    this.#id = randomUUID()
+    this.#id = uuidv4()
     this.#config = config
     this.#storage = new StorageBag()
     this.#secureChannelStore = new SecureChannelStore()
