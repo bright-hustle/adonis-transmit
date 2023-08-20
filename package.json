@@ -1,6 +1,6 @@
 {
   "name": "@brighthustle/adonis-transmit",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "SSE Wrapper for adonis v5",
   "main": "build/providers/TransmitProvider.js",
   "scripts": {
@@ -19,7 +19,7 @@
     "version": "npm run build",
     "sync-labels": "github-label-sync --labels ./node_modules/@adonisjs/mrm-preset/gh-labels.json BrightHustle/adonis-transmit"
   },
-   "repository": {
+  "repository": {
     "type": "git",
     "url": "git+https://github.com/Bright-Hustle/adonis-transmit.git"
   },
