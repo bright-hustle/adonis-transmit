@@ -35,7 +35,7 @@ node ace configure @brighthustle/adonis-transmit
 The module exposes a `transmit` instance, which can be used to send events to the client.
 
 ```ts
-import transmit from '@adonisjs/transmit/services/main'
+import transmit from '@ioc:Adonis/Addons/Transmit'
 
 // Anywhere in your code
 transmit.broadcast('channelName', { username: 'lanz' })
@@ -60,9 +60,9 @@ transmit.broadcast('users/1/posts', { username: 'lanz' })
 You can mark a channel as private and then authorize the client to subscribe to it. The authorization is done using a callback function.
 
 ```ts
-import type { HttpContext } from '@adonisjs/core/http'
+import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 
-transmit.authorizeChannel<{ id: string }>('users/:id', (ctx: HttpContext, { id }) => {
+transmit.authorizeChannel<{ id: string }>('users/:id', (ctx: HttpContextContract, { id }) => {
   return ctx.auth.user?.id === +id
 })
 ```

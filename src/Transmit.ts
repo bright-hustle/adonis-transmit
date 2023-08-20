@@ -1,4 +1,4 @@
-import { randomUUID } from 'node:crypto'
+import { v6 as randomUUID } from 'uuid'
 import Emittery from 'emittery'
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import { Stream } from './Stream'
