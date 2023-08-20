@@ -1,6 +1,6 @@
 {
   "name": "@brighthustle/adonis-transmit",
-  "version": "1.0.3",
+  "version": "1.0.4-0",
   "description": "SSE Wrapper for adonis v5",
   "main": "build/providers/TransmitProvider.js",
   "scripts": {
