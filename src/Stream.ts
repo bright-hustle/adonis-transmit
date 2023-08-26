@@ -41,13 +41,19 @@ export class Stream extends Transform {
     return this.#uid
   }
 
-  public pipe<T extends HeaderStream>(destination: T, options?: { end?: boolean }): T {
+  public pipe<T extends HeaderStream>(
+    destination: T,
+    options?: { end?: boolean },
+    origin?: string
+  ): T {
     if (destination.writeHead) {
       destination.writeHead(200, {
         'Content-Type': 'text/event-stream; charset=utf-8',
         'Transfer-Encoding': 'identity',
         'Cache-Control': 'no-cache',
         'Connection': 'keep-alive',
+        'Access-Control-Allow-Origin': origin ?? '*',
+        'Access-Control-Allow-Credentials': 'true',
       })
       destination.flushHeaders?.()
     }

@@ -64,7 +64,8 @@ export default class Transmit extends Emittery<TransmitHooks> implements Transmi
    */
   public createStream(ctx: HttpContextContract): void {
     const stream = new Stream(ctx.request.input('uid'), ctx.request.request)
-    stream.pipe(ctx.response.response)
+    const origin = ctx.request.headers().origin
+    stream.pipe(ctx.response.response, {}, origin)
     void this.emit('connect', { uid: stream.getUid() })
     this.#storage.push(stream)
 
