@@ -11,11 +11,6 @@ export default class TransmitProvider {
     this.app.container.singleton('Adonis/Addons/Transmit', () => {
       const config = this.app.config.get('transmit', {})
       let transport: Transport | null = null
-
-      // if (config.transport) {
-      //   transport = await this.app.container.make(config.transport.driver)
-      // }
-
       return new Transmit(config, transport)
     })
   }
