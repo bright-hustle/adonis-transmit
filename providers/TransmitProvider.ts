@@ -17,7 +17,7 @@ export default class TransmitProvider {
       let transport: Transport | null = null
 
       if (config.transport && config.transport.driver && config.transport.driver === 'redis') {
-        const redis: typeof Redis = this.app.container.use('Adonis/Addons/Redis')
+        const redis: typeof Redis = this.app.container.make('Adonis/Addons/Redis')
         transport = new RedisTransport(redis)
       }
       return new Transmit(config, transport)
