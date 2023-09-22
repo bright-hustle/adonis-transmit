@@ -78,7 +78,8 @@
     "build/adonis-typings",
     "build/src",
     "build/providers",
-    "build/templates"
+    "build/templates",
+    "build/transports"
   ],
   "eslintConfig": {
     "extends": [
