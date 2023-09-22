@@ -3,6 +3,7 @@ import type { ApplicationContract } from '@ioc:Adonis/Core/Application'
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Transmit from '../src/Transmit'
 import { RedisTransport } from '../transports/RedisTransport'
+import Redis from '@ioc:Adonis/Addons/Redis'
 
 export default class TransmitProvider {
   public static needsApplication = true
@@ -16,7 +17,7 @@ export default class TransmitProvider {
       let transport: Transport | null = null
 
       if (config.transport && config.transport.driver && config.transport.driver === 'redis') {
-        const redis = this.app.container.make('Adonis/Addons/Redis')
+        const redis: typeof Redis = this.app.container.use('Adonis/Addons/Redis')
         transport = new RedisTransport(redis)
       }
       return new Transmit(config, transport)
