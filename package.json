@@ -10,7 +10,7 @@
     "clean": "del-cli build",
     "build": "npm run compile",
     "prepublishOnly": "npm run build",
-    "copyfiles": "copyfiles \"instructions.md\" build",
+    "copyfiles": "copyfiles \"templates/**/*.txt\" \"instructions.md\" build",
     "compile": "npm run lint && npm run clean && tsc && npm run copyfiles",
     "lint": "eslint . --ext=.ts",
     "format": "prettier --write .",
@@ -35,7 +35,7 @@
   "devDependencies": {
     "@adonisjs/core": "^5.9.0",
     "@adonisjs/mrm-preset": "^5.0.3",
-    "@adonisjs/redis": "^7.3.3",
+    "@adonisjs/redis": "^7.3.4",
     "@adonisjs/require-ts": "^2.0.13",
     "@adonisjs/sink": "^5.4.2",
     "@types/mime-types": "^2.1.1",
@@ -58,7 +58,8 @@
     "uuid": "^9.0.0"
   },
   "peerDependencies": {
-    "@adonisjs/core": "^5.9.0"
+    "@adonisjs/core": "^5.9.0",
+    "@adonisjs/redis": "^7.3.4"
   },
   "mrmConfig": {
     "core": false,
@@ -76,7 +77,8 @@
   "files": [
     "build/adonis-typings",
     "build/src",
-    "build/providers"
+    "build/providers",
+    "build/templates"
   ],
   "eslintConfig": {
     "extends": [
@@ -117,6 +119,15 @@
   },
   "adonisjs": {
     "instructionsMd": "./build/instructions.md",
+    "templates": {
+      "basePath": "./build/templates",
+      "config": [
+        {
+          "src": "config/transmit.txt",
+          "dest": "transmit"
+        }
+      ]
+    },
     "providers": [
       "@brighthustle/adonis-transmit"
     ],

@@ -3,6 +3,7 @@
   "compilerOptions": {
     "types": [
       "@adonisjs/core",
+      "@adonisjs/redis",
       "@types/node"
     ],
     "experimentalDecorators": true,

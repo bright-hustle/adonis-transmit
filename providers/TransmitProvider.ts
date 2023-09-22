@@ -2,15 +2,26 @@ import { Transport } from '@ioc:Adonis/Addons/Transmit'
 import type { ApplicationContract } from '@ioc:Adonis/Core/Application'
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Transmit from '../src/Transmit'
+import { RedisTransport } from '../transports/RedisTransport'
 
 export default class TransmitProvider {
   public static needsApplication = true
   constructor(protected app: ApplicationContract) {}
 
   public register() {
+    this.app.container.singleton('Adonis/Addons/Transmit/Redis', async () => {
+      const redis = this.app.container.make('redis')
+
+      return new RedisTransport(redis)
+    })
+
     this.app.container.singleton('Adonis/Addons/Transmit', () => {
       const config = this.app.config.get('transmit', {})
       let transport: Transport | null = null
+
+      if (config.transport && config.transport.driver && config.transport.driver === 'redis') {
+        transport = this.app.container.make(config.transport.driver)
+      }
       return new Transmit(config, transport)
     })
   }

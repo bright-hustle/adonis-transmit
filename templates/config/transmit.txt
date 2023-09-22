@@ -1,0 +1,9 @@
+import { TransmitConfig } from '@ioc:Adonis/Addons/Transmit'
+
+const transmitConfig: TransmitConfig = {
+  transport: {
+    driver: 'local' // Change to redis for Redis Transport
+  }
+}
+
+export default transmitConfig
