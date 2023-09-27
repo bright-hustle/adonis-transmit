@@ -10,7 +10,7 @@ export default class TransmitProvider {
   constructor(protected app: ApplicationContract) {}
 
   public register() {
-    this.app.container.singleton('RedisTransport', async () => {
+    this.app.container.singleton('Adonis/Addons/Transmit/Redis', async () => {
       const redis: typeof Redis = await this.app.container.make('Adonis/Addons/Redis')
       return new RedisTransport(redis)
     })
@@ -19,8 +19,8 @@ export default class TransmitProvider {
       const config = this.app.config.get('transmit', {})
       let transport: Transport | null = null
 
-      if (config.transport) {
-        transport = this.app.container.make(config.transport.driver)
+      if (config.transport && config.transmit.driver && config.transmit.driver === 'redis') {
+        transport = this.app.container.make('Adonis/Addons/Transmit/Redis')
       }
 
       return new Transmit(config, transport)

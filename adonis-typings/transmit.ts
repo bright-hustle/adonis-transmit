@@ -6,9 +6,8 @@ declare module '@ioc:Adonis/Addons/Transmit' {
   }
 
   export interface TransmitConfig {
-    transport: null | { driver: new (...args: any[]) => Transport; channel?: string }
+    transport: null | { driver: string; channel?: string }
   }
-
   export interface TransmitContract {
     broadcast(
       channel: string,
