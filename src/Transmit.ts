@@ -38,8 +38,15 @@ export default class Transmit extends Emittery<TransmitHooks> implements Transmi
     (ctx: HttpContextContract, params?: any) => Promise<boolean>
   > = new Map()
 
+  /**
+   * The transport provider to synchronize messages and subscriptions
+   * across multiple instance.
+   */
   #transport: Transport | null
 
+  /**
+   * The config for the transmit instance.
+   */
   #config: TransmitConfig
 
   constructor(config: TransmitConfig, transport: Transport | null) {
@@ -86,6 +93,15 @@ export default class Transmit extends Emittery<TransmitHooks> implements Transmi
   ) {
     this.#secureChannelStore.add(channel)
     this.#secureChannelCallbacks.set(channel, callback)
+  }
+
+  public getClients() {
+    return Array.from(this.#storage.getAllSubscribers()).map(([stream]) => stream.getUid())
+  }
+
+  public getSubscriptionsForClient(uid: string) {
+    const channels = this.#storage.getChannelByClient(uid)
+    return channels ? Array.from(channels) : []
   }
 
   public async subscribeToChannel(
