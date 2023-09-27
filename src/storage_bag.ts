@@ -48,4 +48,12 @@ export class StorageBag {
 
     return subscribers
   }
+
+  public getChannelByClient(uid: string) {
+    return this.#channelByUid.get(uid)
+  }
+
+  public getAllSubscribers() {
+    return this.#subscribers
+  }
 }

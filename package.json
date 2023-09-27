@@ -1,6 +1,6 @@
 {
   "name": "@brighthustle/adonis-transmit",
-  "version": "1.0.6-3",
+  "version": "1.0.6-8",
   "description": "SSE Wrapper for adonis v5",
   "main": "build/providers/TransmitProvider.js",
   "scripts": {
@@ -15,7 +15,7 @@
     "lint": "eslint . --ext=.ts",
     "format": "prettier --write .",
     "commit": "git-cz",
-    "release": "np --message=\"chore(release): %s\" --no-tests",
+    "release": "np --message=\"chore(release): %s\" --no-tests --any-branch",
     "version": "npm run build",
     "sync-labels": "github-label-sync --labels ./node_modules/@adonisjs/mrm-preset/gh-labels.json BrightHustle/adonis-transmit"
   },
@@ -35,7 +35,7 @@
   "devDependencies": {
     "@adonisjs/core": "^5.9.0",
     "@adonisjs/mrm-preset": "^5.0.3",
-    "@adonisjs/redis": "^7.3.4",
+    "@adonisjs/redis": "^7.0.4",
     "@adonisjs/require-ts": "^2.0.13",
     "@adonisjs/sink": "^5.4.2",
     "@types/mime-types": "^2.1.1",
@@ -52,15 +52,14 @@
     "typescript": "^5.1.6"
   },
   "dependencies": {
+    "@adonisjs/redis": "^7.0.4",
     "@poppinss/matchit": "^3.1.2",
     "@poppinss/utils": "^6.5.0-3",
-    "@adonisjs/redis": "^7.0.4",
     "emittery": "0.11.0",
     "uuid": "^9.0.0"
   },
   "peerDependencies": {
-    "@adonisjs/core": "^5.9.0",
-    "@adonisjs/redis": "^7.3.4"
+    "@adonisjs/core": "^5.9.0"
   },
   "mrmConfig": {
     "core": false,
