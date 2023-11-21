@@ -49,7 +49,7 @@ export class Stream extends Transform {
     if (destination.writeHead) {
       destination.writeHead(200, {
         'Content-Type': 'text/event-stream; charset=utf-8',
-        'Transfer-Encoding': 'identity',
+        'X-Accel-Buffering':'no',
         'Cache-Control': 'no-cache',
         'Connection': 'keep-alive',
         'Access-Control-Allow-Origin': origin ?? '*',
