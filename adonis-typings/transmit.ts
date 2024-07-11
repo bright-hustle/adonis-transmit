@@ -30,7 +30,11 @@ declare module '@ioc:Adonis/Addons/Transmit' {
 
     unsubscribeFromChannel(uid: string, channel: string, ctx: HttpContextContract): boolean
 
-    broadcastExcept(channel: string, payload: Record<string, unknown>, senderUid: string | string[])
+    broadcastExcept(
+      channel: string,
+      payload: Record<string, unknown>,
+      senderUid: string | string[]
+    ): void
   }
 
   const Transmit: TransmitContract
