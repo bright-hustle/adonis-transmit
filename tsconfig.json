@@ -1,7 +1,6 @@
 {
   "extends": "./node_modules/@adonisjs/mrm-preset/_tsconfig",
   "compilerOptions": {
-    "target": "ES2020",
     "types": [
       "@adonisjs/core",
       "@adonisjs/redis",
@@ -10,7 +9,5 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "skipLibCheck": true,
-    "downlevelIteration": true,
-    "forceConsistentCasingInFileNames": true,
   },
 }
