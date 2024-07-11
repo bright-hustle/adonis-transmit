@@ -4,7 +4,7 @@ import { Stream } from './Stream'
 import { StorageBag } from './storage_bag'
 import { SecureChannelStore } from './secure_channel_store'
 import { TransmitConfig, TransmitContract, Transport } from '@ioc:Adonis/Addons/Transmit'
-import { TransportMessageType } from './Types/transportMessage'
+import { TransportMessageType } from './transportMessage'
 
 interface TransmitHooks {
   connect: { uid: string; ctx: HttpContextContract }
