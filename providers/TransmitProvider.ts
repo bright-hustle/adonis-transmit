@@ -58,7 +58,7 @@ export default class TransmitProvider {
   }
 
   public async shutdown() {
-    const transmit = await this.app.container.make('transmit')
+    const transmit = await this.app.container.make('Adonis/Addons/Transmit')
 
     await transmit.shutdown()
   }

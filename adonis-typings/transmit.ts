@@ -35,6 +35,8 @@ declare module '@ioc:Adonis/Addons/Transmit' {
       payload: Record<string, unknown>,
       senderUid: string | string[]
     ): void
+
+    shutdown(): Promise<void>
   }
 
   const Transmit: TransmitContract
