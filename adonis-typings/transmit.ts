@@ -1,4 +1,5 @@
 declare module '@ioc:Adonis/Addons/Transmit' {
+  import { Stream } from 'stream'
   import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 
   export interface Transport {
@@ -22,9 +23,9 @@ declare module '@ioc:Adonis/Addons/Transmit' {
     transport: null | { driver: string; channel?: string }
   }
   export interface TransmitContract {
-    broadcast(channel: string, payload: Record<string, unknown>): void
+    broadcast(channel: string, payload: Record<string, unknown>): Promise<void>
 
-    createStream(ctx: HttpContextContract): void
+    createStream(ctx: HttpContextContract): Stream
 
     subscribeToChannel(uid: string, channel: string, ctx: HttpContextContract): Promise<boolean>
 

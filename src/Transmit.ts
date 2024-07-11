@@ -77,6 +77,9 @@ export default class Transmit extends Emittery<TransmitHooks> implements Transmi
     // @ts-ignore
     void this.transport?.subscribe<TransmitMessage>(this.config.transport!.channel!, (message) => {
       const { type, channel, payload } = message
+      console.log('type ::', type)
+      console.log('channel ::', channel)
+      console.log('payload ::', payload)
 
       if (type === TransportMessageType.Broadcast) {
         void this.broadcastLocally(channel, payload)
