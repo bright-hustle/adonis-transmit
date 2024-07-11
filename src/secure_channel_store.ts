@@ -1,16 +1,16 @@
 import matchit from '@poppinss/matchit'
 
 export class SecureChannelStore {
-  #securedChannelsDefinition: any[] = []
+  private securedChannelsDefinition: any[] = []
 
   public add(channel: string) {
     const encodedDefinition = matchit.parse(channel)
 
-    this.#securedChannelsDefinition.push(encodedDefinition)
+    this.securedChannelsDefinition.push(encodedDefinition)
   }
 
   public match(channel: string) {
-    const matchedChannel = matchit.match(channel, this.#securedChannelsDefinition)
+    const matchedChannel = matchit.match(channel, this.securedChannelsDefinition)
 
     if (matchedChannel.length > 0) {
       const params = matchit.exec(channel, matchedChannel)

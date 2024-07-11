@@ -15,4 +15,8 @@ export class RedisTransport implements Transport {
   public unsubscribe(channel: string): any {
     return this.redis.unsubscribe(channel)
   }
+
+  public disconnect(): any {
+    return this.redis.disconnect()
+  }
 }

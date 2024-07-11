@@ -10,11 +10,6 @@ export default class TransmitProvider {
   constructor(protected app: ApplicationContract) {}
 
   public register() {
-    // this.app.container.singleton('Adonis/Addons/Transmit/Redis', async () => {
-    //   const redis: typeof Redis = await this.app.container.make('Adonis/Addons/Redis')
-    //   return new RedisTransport(redis)
-    // })
-
     this.app.container.singleton('Adonis/Addons/Transmit', () => {
       const config = this.app.config.get('transmit', {})
       let transport: Transport | null = null
@@ -52,7 +47,7 @@ export default class TransmitProvider {
       const uid = ctx.request.input('uid')
       const channel = ctx.request.input('channel')
 
-      const success = transmit.unsubscribeFromChannel(uid, channel)
+      const success = transmit.unsubscribeFromChannel(uid, channel, ctx)
 
       if (!success) {
         return ctx.response.badRequest()
@@ -60,5 +55,11 @@ export default class TransmitProvider {
 
       return ctx.response.noContent()
     })
+  }
+
+  public async shutdown() {
+    const transmit = await this.app.container.make('transmit')
+
+    await transmit.shutdown()
   }
 }

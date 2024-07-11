@@ -1,5 +1,5 @@
 import { Transform } from 'node:stream'
-import type { OutgoingHttpHeaders } from 'node:http'
+import type { IncomingMessage, OutgoingHttpHeaders } from 'node:http'
 
 function dataString(data: string | object): string {
   if (typeof data === 'object') return dataString(JSON.stringify(data))
@@ -25,12 +25,12 @@ interface WriteHeaders {
 export type HeaderStream = NodeJS.WritableStream & WriteHeaders
 
 export class Stream extends Transform {
-  readonly #uid: string
+  private readonly uid: string
 
-  constructor(uid: string, request: any) {
+  constructor(uid: string, request?: IncomingMessage) {
     super({ objectMode: true })
-    this.#uid = uid
-    if (request.socket) {
+    this.uid = uid
+    if (request?.socket) {
       request.socket.setKeepAlive(true)
       request.socket.setNoDelay(true)
       request.socket.setTimeout(0)
@@ -38,22 +38,24 @@ export class Stream extends Transform {
   }
 
   public getUid() {
-    return this.#uid
+    return this.uid
   }
 
   public pipe<T extends HeaderStream>(
     destination: T,
     options?: { end?: boolean },
-    origin?: string
+    forwardHeaders?: Record<string, any>
   ): T {
     if (destination.writeHead) {
       destination.writeHead(200, {
-        'Content-Type': 'text/event-stream; charset=utf-8',
-        'Transfer-Encoding': 'identity',
-        'Cache-Control': 'no-cache',
+        ...forwardHeaders,
+        'Cache-Control': 'private, no-cache, no-store, must-revalidate, max-age=0, no-transform',
         'Connection': 'keep-alive',
-        'Access-Control-Allow-Origin': origin ?? '*',
-        'Access-Control-Allow-Credentials': 'true',
+        'Content-Type': 'text/event-stream',
+        'Expire': '0',
+        'Pragma': 'no-cache',
+        // @see https://www.nginx.com/resources/wiki/start/topics/examples/x-accel/#x-accel-buffering
+        'X-Accel-Buffering': 'no',
       })
       destination.flushHeaders?.()
     }
